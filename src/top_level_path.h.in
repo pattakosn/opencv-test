@@ -1,0 +1,5 @@
+#ifndef TOP_LEVEL_PATH_H
+#define TOP_LEVEL_PATH_H
+#include <string>
+static const std::string top_level_path_str{"@PROJECT_SOURCE_DIR@/resources"};
+#endif

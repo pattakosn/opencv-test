@@ -1,0 +1,8 @@
+exe_from_single_source(annotate)
+exe_from_single_source(contour_detection)
+exe_from_single_source(convolution)
+exe_from_single_source(edge_detection)
+exe_from_single_source(intro)
+exe_from_single_source(mouse)
+exe_from_single_source(resize_scroll)
+exe_from_single_source(video)
