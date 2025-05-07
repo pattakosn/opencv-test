@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
-find_package(OpenCV CONFIG REQUIRED PATHS D:/ExternalLibraries/opencv4/opencv4-4.9.0-imkl)
+find_package(OpenCV CONFIG REQUIRED) # PATHS D:/ExternalLibraries/opencv4/opencv-4.9.0-imkl-contrib-non_free)
 #find_package(OpenCV REQUIRED core highgui imgproc PATHS D:/ExternalLibraries/opencv4/opencv4-4.9.0)#-imkl)
 
 configure_file (
@@ -16,10 +16,6 @@ macro(exe_from_single_source BIN_NAME)
     add_executable(${BIN_NAME}
         ${BIN_NAME}.cpp
         ${PROJECT_BINARY_DIR}/top_level_path.h
-        #PROPERTIES
-        #ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-        #LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-        #RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     )
     target_include_directories(${BIN_NAME} PRIVATE ${PROJECT_BINARY_DIR})
     target_link_libraries(${BIN_NAME} PRIVATE ${OpenCV_LIBS})
@@ -29,6 +25,11 @@ macro(exe_from_single_source BIN_NAME)
              -Wall -Wextra -pedantic>
         $<$<CXX_COMPILER_ID:MSVC>:
              /WX /W4>)
+    set_target_properties(${BIN_NAME}
+        PROPERTIES
+        #ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+        #LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/my-bin")
 endmacro()
 
 add_subdirectory(src)

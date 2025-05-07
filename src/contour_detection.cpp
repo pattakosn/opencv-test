@@ -3,6 +3,7 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include "top_level_path.h"
+#include <iostream>
 
 using namespace cv;
 using std::vector;
@@ -18,6 +19,7 @@ int main()
     cvtColor(image_ref, img_gray, COLOR_BGR2GRAY);
 
     Mat thresh;
+    std::cout << "\tlala\n";
     threshold(img_gray, thresh, 150, 255, THRESH_BINARY);
     imshow("Binary mage", thresh);
     waitKey(0);
